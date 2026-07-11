@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>揉み処たまき</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero card">
+      <p class="eyebrow">みーちゃん専用 足揉み予約処</p>
+      <h1>揉み処たまき</h1>
+      <p class="lead">本日もおつかれさまです。たまき監修のもと、店主かぷーが心をこめてほぐします。</p>
+      <div class="status-pill">本日営業中</div>
+    </section>
+
+    <form id="bookingForm" class="booking card">
+      <section class="section-block">
+        <h2>本日の足の状態</h2>
+        <div class="choice-grid" data-name="condition">
+          <button type="button" data-value="軽く疲れた">軽く疲れた</button>
+          <button type="button" data-value="足が重い">足が重い</button>
+          <button type="button" data-value="ふくらはぎパンパン">ふくらはぎパンパン</button>
+          <button type="button" data-value="たまき助けて">たまき助けて</button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>おすすめコース</h2>
+        <p id="recommendation" class="recommendation">足の状態を選ぶと、たまき店長がコースをおすすめします。</p>
+      </section>
+
+      <section class="section-block">
+        <h2>コース</h2>
+        <div class="course-list" data-name="course">
+          <button type="button" data-value="肉球おためしコース 10分 / 100たま">
+            <span>肉球おためしコース</span><small>10分 / 100たま</small>
+          </button>
+          <button type="button" data-value="月あかり足揉みコース 20分 / 300たま">
+            <span>月あかり足揉みコース</span><small>20分 / 300たま</small>
+          </button>
+          <button type="button" data-value="みーちゃん極楽コース 30分 / 500たま">
+            <span>みーちゃん極楽コース</span><small>30分 / 500たま</small>
+          </button>
+          <button type="button" data-value="店主おまかせコース 応相談 / 800たま">
+            <span>店主おまかせコース</span><small>応相談 / 800たま</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>強さ</h2>
+        <div class="choice-grid" data-name="strength">
+          <button type="button" data-value="やさしめ">やさしめ</button>
+          <button type="button" data-value="ふつう">ふつう</button>
+          <button type="button" data-value="しっかり">しっかり</button>
+          <button type="button" data-value="今日は限界">今日は限界</button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>重点部位</h2>
+        <div class="choice-grid" data-name="part">
+          <button type="button" data-value="足裏">足裏</button>
+          <button type="button" data-value="ふくらはぎ">ふくらはぎ</button>
+          <button type="button" data-value="足首">足首</button>
+          <button type="button" data-value="全部">全部</button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>備考</h2>
+        <textarea id="note" rows="4" placeholder="例：今日は右足が重いです"></textarea>
+      </section>
+
+      <button id="submitButton" class="submit-button" type="submit">たまきに依頼する</button>
+      <p id="message" class="message" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
