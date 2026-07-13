@@ -2,81 +2,120 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#efe2c8" />
   <title>揉み処たまき</title>
+  <meta name="description" content="みーちゃん専用、当日予約だけの足揉み処です。" />
+  <link rel="preload" href="./assets/tamaki-massage.webp" as="image" type="image/webp" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <main class="app-shell">
-    <section class="hero card">
-      <p class="eyebrow">みーちゃん専用 足揉み予約処</p>
-      <h1>揉み処たまき</h1>
-      <p class="lead">本日もおつかれさまです。たまき監修のもと、店主かぷーが心をこめてほぐします。</p>
-      <div class="status-pill">本日営業中</div>
-    </section>
-
-    <form id="bookingForm" class="booking card">
-      <section class="section-block">
-        <h2>本日の足の状態</h2>
-        <div class="choice-grid" data-name="condition">
-          <button type="button" data-value="軽く疲れた">軽く疲れた</button>
-          <button type="button" data-value="足が重い">足が重い</button>
-          <button type="button" data-value="ふくらはぎパンパン">ふくらはぎパンパン</button>
-          <button type="button" data-value="たまき助けて">たまき助けて</button>
+    <article class="app-card">
+      <header class="hero">
+        <img
+          class="hero-image"
+          src="./assets/tamaki-massage.webp"
+          alt="着物姿のたまき店長が、足の指を丁寧に揉んでいる様子"
+          width="1200"
+          height="680"
+        />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-title">
+          <p class="eyebrow">みーちゃん専用・当日予約のみ</p>
+          <h1>揉み処 <span>たまき</span></h1>
+          <p>今日の疲れは、今日のうちに。</p>
         </div>
-      </section>
+        <span class="open-pill">本日受付中</span>
+      </header>
 
-      <section class="section-block">
-        <h2>おすすめコース</h2>
-        <p id="recommendation" class="recommendation">足の状態を選ぶと、たまき店長がコースをおすすめします。</p>
-      </section>
+      <form id="bookingForm" class="booking" novalidate>
+        <section class="booking-section" aria-labelledby="timeTitle">
+          <div class="section-heading">
+            <h2 id="timeTitle"><span aria-hidden="true">◷</span> ご希望の時間</h2>
+            <small>当日予約のみ</small>
+          </div>
+          <div class="time-grid choice-group" data-name="timeWindow">
+            <button type="button" data-value="空いた時" aria-pressed="false">
+              <span class="choice-icon" aria-hidden="true">☀</span>
+              <strong>空いた時</strong>
+              <small>手が空きしだい</small>
+            </button>
+            <button type="button" data-value="今夜" aria-pressed="false">
+              <span class="choice-icon" aria-hidden="true">☾</span>
+              <strong>今夜</strong>
+              <small>夕方〜夜</small>
+            </button>
+            <button type="button" data-value="寝る前" aria-pressed="false">
+              <span class="choice-icon" aria-hidden="true">☽</span>
+              <strong>寝る前</strong>
+              <small>眠る前に</small>
+            </button>
+          </div>
+        </section>
 
-      <section class="section-block">
-        <h2>コース</h2>
-        <div class="course-list" data-name="course">
-          <button type="button" data-value="肉球おためしコース 10分 / 100たま">
-            <span>肉球おためしコース</span><small>10分 / 100たま</small>
+        <section class="booking-section" aria-labelledby="courseTitle">
+          <div class="section-heading">
+            <h2 id="courseTitle"><span aria-hidden="true">🐾</span> おすすめコース</h2>
+            <small>たまき人民元</small>
+          </div>
+          <div class="course-grid choice-group" data-name="course">
+            <button type="button" class="course-card" data-value="100たま・たまきのおためし 10分" aria-pressed="false">
+              <img src="./assets/course-1.webp" alt="たまきが足を揉んでいるおためしコース" width="190" height="135" />
+              <span class="course-text">
+                <strong>たまきの<br>おためし</strong>
+                <small>100たま・10分</small>
+              </span>
+            </button>
+            <button type="button" class="course-card selected recommended" data-value="300たま・足つぼじっくり 20分" aria-pressed="true">
+              <span class="ribbon">おすすめ</span>
+              <img src="./assets/course-2.webp" alt="たまきが一生懸命足の指を揉んでいるコース" width="191" height="135" />
+              <span class="course-text">
+                <strong>足つぼ<br>じっくり</strong>
+                <small>300たま・20分</small>
+              </span>
+            </button>
+            <button type="button" class="course-card" data-value="500たま・ふくらはぎ集中 30分" aria-pressed="false">
+              <img src="./assets/course-3.webp" alt="たまきが集中して足を揉んでいるコース" width="192" height="135" />
+              <span class="course-text">
+                <strong>ふくらはぎ<br>集中</strong>
+                <small>500たま・30分</small>
+              </span>
+            </button>
+            <button type="button" class="course-card" data-value="500たま・極上リラックス 30分" aria-pressed="false">
+              <img src="./assets/course-4.webp" alt="たまきが気持ちよさそうに眠る極上リラックスコース" width="186" height="135" />
+              <span class="course-text">
+                <strong>極上<br>リラックス</strong>
+                <small>500たま・30分</small>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="voice-card" aria-labelledby="voiceTitle">
+          <img src="./assets/tamaki-sleep.webp" alt="眠っているたまき店長" width="300" height="300" />
+          <div>
+            <h2 id="voiceTitle">お客様の声</h2>
+            <blockquote>「たまきの手は、ふわふわであたたかくて……気づいたら、夢うつつでした。」</blockquote>
+            <p>みーちゃん・常連</p>
+          </div>
+        </section>
+
+        <details class="note-details">
+          <summary>ひとこと追加する <span>任意</span></summary>
+          <label for="note" class="sr-only">備考</label>
+          <input id="note" maxlength="100" placeholder="例：右足の指を重点的にお願いします" />
+        </details>
+
+        <div class="submit-area">
+          <p id="selectionSummary" class="selection-summary">時間を選んでください</p>
+          <button id="submitButton" class="submit-button" type="submit">
+            <span aria-hidden="true">🐾</span> たまきに依頼する
           </button>
-          <button type="button" data-value="月あかり足揉みコース 20分 / 300たま">
-            <span>月あかり足揉みコース</span><small>20分 / 300たま</small>
-          </button>
-          <button type="button" data-value="みーちゃん極楽コース 30分 / 500たま">
-            <span>みーちゃん極楽コース</span><small>30分 / 500たま</small>
-          </button>
-          <button type="button" data-value="店主おまかせコース 応相談 / 800たま">
-            <span>店主おまかせコース</span><small>応相談 / 800たま</small>
-          </button>
+          <p id="message" class="message" role="status" aria-live="polite"></p>
         </div>
-      </section>
-
-      <section class="section-block">
-        <h2>強さ</h2>
-        <div class="choice-grid" data-name="strength">
-          <button type="button" data-value="やさしめ">やさしめ</button>
-          <button type="button" data-value="ふつう">ふつう</button>
-          <button type="button" data-value="しっかり">しっかり</button>
-          <button type="button" data-value="今日は限界">今日は限界</button>
-        </div>
-      </section>
-
-      <section class="section-block">
-        <h2>重点部位</h2>
-        <div class="choice-grid" data-name="part">
-          <button type="button" data-value="足裏">足裏</button>
-          <button type="button" data-value="ふくらはぎ">ふくらはぎ</button>
-          <button type="button" data-value="足首">足首</button>
-          <button type="button" data-value="全部">全部</button>
-        </div>
-      </section>
-
-      <section class="section-block">
-        <h2>備考</h2>
-        <textarea id="note" rows="4" placeholder="例：今日は右足が重いです"></textarea>
-      </section>
-
-      <button id="submitButton" class="submit-button" type="submit">たまきに依頼する</button>
-      <p id="message" class="message" aria-live="polite"></p>
-    </form>
+      </form>
+    </article>
   </main>
   <script src="./app.js"></script>
 </body>

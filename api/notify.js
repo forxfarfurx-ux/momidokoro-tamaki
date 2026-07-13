@@ -8,30 +8,42 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: "DISCORD_WEBHOOK_URL is not set" });
   }
 
-  const { condition, course, strength, part, note } = request.body || {};
+  const { timeWindow, course, note } = request.body || {};
+
+  if (!timeWindow || !course) {
+    return response.status(400).json({ error: "Missing booking details" });
+  }
 
   const content = [
-    "🐾 **揉み処たまき 予約が入りました**",
+    "🐾 **揉み処たまき　当日予約が入りました**",
     "",
-    `お客様：みーちゃん`,
-    `本日の足の状態：${condition || "未選択"}`,
-    `コース：${course || "未選択"}`,
-    `強さ：${strength || "未選択"}`,
-    `重点部位：${part || "未選択"}`,
-    `備考：${note || "なし"}`,
+    "お客様：みーちゃん",
+    `希望時間：${timeWindow}`,
+    `コース：${course}`,
+    `ひとこと：${note || "なし"}`,
     "",
     "店主かぷー、出動準備をお願いします。",
   ].join("\n");
 
-  const discordResponse = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content }),
-  });
+  try {
+    const discordResponse = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "揉み処たまき",
+        content,
+      }),
+    });
 
-  if (!discordResponse.ok) {
-    return response.status(502).json({ error: "Failed to notify Discord" });
+    if (!discordResponse.ok) {
+      const detail = await discordResponse.text();
+      console.error("Discord webhook error:", discordResponse.status, detail);
+      return response.status(502).json({ error: "Failed to notify Discord" });
+    }
+
+    return response.status(200).json({ ok: true });
+  } catch (error) {
+    console.error("Webhook request failed:", error);
+    return response.status(502).json({ error: "Webhook request failed" });
   }
-
-  return response.status(200).json({ ok: true });
 }
